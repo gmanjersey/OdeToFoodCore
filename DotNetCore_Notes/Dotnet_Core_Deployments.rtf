@@ -1,0 +1,229 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}}
+{\colortbl ;\red0\green0\blue255;\red163\green21\blue21;\red255\green0\blue0;\red0\green0\blue0;\red0\green255\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9\par
+\ul\fs36 dotnet publish\par
+\par
+\par
+\par
+\ulnone C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore>dotnet publish\par
+Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Core\par
+Copyright (C) Microsoft Corporation. All rights reserved.\par
+\par
+  Determining projects to restore...\par
+  All projects are up-to-date for restore.\par
+  OdeToFoodCore.Core -> C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore.Core\\bin\\Debug\\netcoreapp2.1\\OdeToFoodCore.Core.dll\par
+  OdeToFoodCore.Core -> C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore.Core\\bin\\Debug\\netcoreapp2.1\\publish\\\par
+  OdeToFoodCore.Data -> C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore.Data\\bin\\Debug\\netcoreapp2.1\\OdeToFoodCore.Data.dll\par
+  OdeToFoodCore.Data -> C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore.Data\\bin\\Debug\\netcoreapp2.1\\publish\\\par
+  OdeToFoodCore -> C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore\\bin\\Debug\\netcoreapp2.1\\OdeToFoodCore.dll\par
+  OdeToFoodCore -> C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore\\bin\\Debug\\netcoreapp2.1\\OdeToFoodCore.Views.dll\par
+  OdeToFoodCore -> C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore\\bin\\Debug\\netcoreapp2.1\\publish\\\par
+\par
+C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore>dotnet publish --help\par
+Usage: dotnet publish [options] <PROJECT | SOLUTION>\par
+\par
+Arguments:\par
+  <PROJECT | SOLUTION>   The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.\par
+\par
+Options:\par
+  -h, --help                            Show command line help.\par
+  -o, --output <OUTPUT_DIR>             The output directory to place the published artifacts in.\par
+  -f, --framework <FRAMEWORK>           The target framework to publish for. The target framework has to be specified in the project file.\par
+  -r, --runtime <RUNTIME_IDENTIFIER>    The target runtime to publish for. This is used when creating a self-contained deployment.\par
+                                        The default is to publish a framework-dependent application.\par
+  -c, --configuration <CONFIGURATION>   The configuration to publish for. The default for most projects is 'Debug'.\par
+  --version-suffix <VERSION_SUFFIX>     Set the value of the $(VersionSuffix) property to use when building the project.\par
+  --manifest <MANIFEST>                 The path to a target manifest file that contains the list of packages to be excluded from the publish step.\par
+  --no-build                            Do not build the project before publishing. Implies --no-restore.\par
+  --self-contained                      Publish the .NET Core runtime with your application so the runtime doesn't need to be installed on the target machine.\par
+                                        The default is 'true' if a runtime identifier is specified.\par
+  --no-self-contained                   Publish your application as a framework dependent application without the .NET Core runtime. A supported .NET Core runtime must be installed to run your application.\par
+  /nologo, --nologo                     Do not display the startup banner or the copyright message.\par
+  --interactive                         Allows the command to stop and wait for user input or action (for example to complete authentication).\par
+  --no-restore                          Do not restore the project before building.\par
+  -v, --verbosity <LEVEL>               Set the MSBuild verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic].\par
+  --no-dependencies                     Do not restore project-to-project references and only restore the specified project.\par
+  --force                               Force all dependencies to be resolved even if the last restore was successful.\par
+                                        This is equivalent to deleting project.assets.json.\par
+\par
+C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore>C:\\Leroy\\SC\\Git\\dotnetpractice\\OdetoCode\\OdeToFoodCore\\OdeToFoodCore\par
+\ul C:\\temp\\OdetoFoodCore:\par
+Fix - missing node_modules folder modify OdeToFoodCore.csproj file like below:\par
+\par
+\cf1\ulnone\f1\fs19 <\cf2 Project\cf1  \cf3 Sdk\cf1 =\cf4 "\cf1 Microsoft.NET.Sdk.Web\cf4 "\cf1 >\cf4\par
+\par
+\cf1   <\cf2 PropertyGroup\cf1 >\cf4\par
+\cf1     <\cf2 TargetFramework\cf1 >\cf4 netcoreapp2.1\cf1 </\cf2 TargetFramework\cf1 >\cf4\par
+\cf1   </\cf2 PropertyGroup\cf1 >\cf4\par
+\par
+\cf1\tab\highlight5 <\cf2 Target\cf1  \cf3 Name\cf1 =\cf4 "\cf1 PostBuild\cf4 "\cf1  \cf3 AfterTargets\cf1 =\cf4 "\cf1 ComputeFilesToPublish\cf4 "\cf1 >\cf4\par
+\cf1\tab\tab <\cf2 Exec\cf1  \cf3 Command\cf1 =\cf4 "\cf1 npm install\cf4 "\cf1  />\cf4\par
+\cf1\tab </\cf2 Target\cf1 >\cf4\par
+\par
+\cf1\tab <\cf2 ItemGroup\cf1 >\cf4\par
+\cf1\tab\tab <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules/**\cf4 "\cf1  \cf3 CopyToPublishDirectory\cf1  =\cf4 "\cf1 PreserveNewest\cf4 "\cf1  />\cf4\par
+\cf1\tab </\cf2 ItemGroup\cf1 >\cf4\par
+\cf1\highlight0\tab\cf4\par
+\cf1   <\cf2 ItemGroup\cf1 >\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net-bs\\css\\dataTables.bootstrap.css\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net-bs\\css\\dataTables.bootstrap.min.css\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net-bs\\License.txt\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net-bs\\package.json\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net\\License.txt\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net\\package.json\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\AUTHORS.txt\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\bower.json\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\external\\sizzle\\LICENSE.txt\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\LICENSE.txt\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 Content\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\package.json\cf4 "\cf1  />\cf4\par
+\cf1   </\cf2 ItemGroup\cf1 >\cf4\par
+\par
+\cf1   <\cf2 ItemGroup\cf1 >\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net-bs\\js\\dataTables.bootstrap.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net-bs\\js\\dataTables.bootstrap.min.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net-bs\\Readme.md\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net\\js\\jquery.dataTables.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net\\js\\jquery.dataTables.min.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\datatables.net\\Readme.md\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\dist\\jquery.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\dist\\jquery.min.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\dist\\jquery.min.map\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\dist\\jquery.slim.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\dist\\jquery.slim.min.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\dist\\jquery.slim.min.map\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\external\\sizzle\\dist\\sizzle.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\external\\sizzle\\dist\\sizzle.min.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\external\\sizzle\\dist\\sizzle.min.map\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\README.md\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax\\jsonp.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax\\load.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax\\script.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax\\var\\location.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax\\var\\nonce.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax\\var\\rquery.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\ajax\\xhr.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\attributes.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\attributes\\attr.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\attributes\\classes.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\attributes\\prop.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\attributes\\support.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\attributes\\val.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\callbacks.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\access.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\camelCase.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\DOMEval.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\init.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\isAttached.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\nodeName.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\parseHTML.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\parseXML.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\ready-no-deferred.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\ready.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\readyException.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\stripAndCollapse.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\support.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\toType.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\core\\var\\rsingleTag.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\addGetHookIf.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\adjustCSS.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\curCSS.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\finalPropName.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\hiddenVisibleSelectors.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\showHide.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\support.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\var\\cssExpand.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\var\\getStyles.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\var\\isHiddenWithinTree.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\var\\rboxStyle.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\var\\rnumnonpx.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\css\\var\\swap.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\data.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\data\\Data.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\data\\var\\acceptData.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\data\\var\\dataPriv.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\data\\var\\dataUser.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\deferred.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\deferred\\exceptionHook.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\deprecated.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\deprecated\\ajax-event-alias.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\deprecated\\event.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\dimensions.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\effects.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\effects\\animatedSelector.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\effects\\Tween.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\event.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\event\\focusin.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\event\\support.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\event\\trigger.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\exports\\amd.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\exports\\global.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\jquery.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\buildFragment.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\getAll.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\setGlobalEval.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\support.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\var\\rscriptType.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\var\\rtagName.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\wrapMap.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\manipulation\\_evalUrl.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\offset.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\queue.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\queue\\delay.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\selector-native.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\selector-sizzle.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\selector.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\serialize.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\traversing.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\traversing\\findFilter.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\traversing\\var\\dir.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\traversing\\var\\rneedsContext.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\traversing\\var\\siblings.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\arr.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\class2type.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\document.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\documentElement.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\flat.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\fnToString.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\getProto.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\hasOwn.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\indexOf.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\isFunction.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\isWindow.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\ObjectFunctionString.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\pnum.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\push.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\rcheckableType.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\rcssNum.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\rnothtmlwhite.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\slice.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\support.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\var\\toString.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 node_modules\\jquery\\src\\wrap.js\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 None\cf1  \cf3 Include\cf1 =\cf4 "\cf1 wwwroot\\OdeToFood.png\cf4 "\cf1  />\cf4\par
+\cf1   </\cf2 ItemGroup\cf1 >\cf4\par
+\par
+\cf1   <\cf2 ItemGroup\cf1 >\cf4\par
+\cf1     <\cf2 PackageReference\cf1  \cf3 Include\cf1 =\cf4 "\cf1 Microsoft.AspNetCore.App\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 PackageReference\cf1  \cf3 Include\cf1 =\cf4 "\cf1 Microsoft.AspNetCore.Razor.Design\cf4 "\cf1  \cf3 Version\cf1 =\cf4 "\cf1 2.1.2\cf4 "\cf1  \cf3 PrivateAssets\cf1 =\cf4 "\cf1 All\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 PackageReference\cf1  \cf3 Include\cf1 =\cf4 "\cf1 Microsoft.VisualStudio.Web.CodeGeneration.Design\cf4 "\cf1  \cf3 Version\cf1 =\cf4 "\cf1 2.1.10\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 PackageReference\cf1  \cf3 Include\cf1 =\cf4 "\cf1 OdeToCode.UseNodeModules\cf4 "\cf1  \cf3 Version\cf1 =\cf4 "\cf1 1.0.6\cf4 "\cf1  />\cf4\par
+\cf1   </\cf2 ItemGroup\cf1 >\cf4\par
+\par
+\cf1   <\cf2 ItemGroup\cf1 >\cf4\par
+\cf1     <\cf2 ProjectReference\cf1  \cf3 Include\cf1 =\cf4 "\cf1 ..\\OdeToFoodCore.Core\\OdeToFoodCore.Core.csproj\cf4 "\cf1  />\cf4\par
+\cf1     <\cf2 ProjectReference\cf1  \cf3 Include\cf1 =\cf4 "\cf1 ..\\OdeToFoodCore.Data\\OdeToFoodCore.Data.csproj\cf4 "\cf1  />\cf4\par
+\cf1   </\cf2 ItemGroup\cf1 >\cf4\par
+\par
+\cf1 </\cf2 Project\cf1 >\cf4\par
+\cf0\ul\f0\fs36\par
+\par
+\par
+\fs22\par
+\par
+}
+ 

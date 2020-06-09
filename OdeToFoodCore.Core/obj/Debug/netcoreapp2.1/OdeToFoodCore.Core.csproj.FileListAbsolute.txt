@@ -1,0 +1,9 @@
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\bin\Debug\netcoreapp2.1\OdeToFoodCore.Core.deps.json
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\bin\Debug\netcoreapp2.1\OdeToFoodCore.Core.dll
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\bin\Debug\netcoreapp2.1\OdeToFoodCore.Core.pdb
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\obj\Debug\netcoreapp2.1\OdeToFoodCore.Core.AssemblyInfoInputs.cache
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\obj\Debug\netcoreapp2.1\OdeToFoodCore.Core.AssemblyInfo.cs
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\obj\Debug\netcoreapp2.1\OdeToFoodCore.Core.csproj.CoreCompileInputs.cache
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\obj\Debug\netcoreapp2.1\OdeToFoodCore.Core.dll
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\obj\Debug\netcoreapp2.1\OdeToFoodCore.Core.pdb
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Core\obj\Debug\netcoreapp2.1\OdeToFoodCore.Core.csprojAssemblyReference.cache

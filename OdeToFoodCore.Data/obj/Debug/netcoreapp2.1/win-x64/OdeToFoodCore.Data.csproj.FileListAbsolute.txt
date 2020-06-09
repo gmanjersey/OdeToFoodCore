@@ -1,0 +1,17 @@
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\hostpolicy.dll
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\hostfxr.dll
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.deps.json
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.runtimeconfig.json
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.runtimeconfig.dev.json
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.dll
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.pdb
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Core.dll
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\bin\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Core.pdb
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.csprojAssemblyReference.cache
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.AssemblyInfoInputs.cache
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.AssemblyInfo.cs
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.csproj.CoreCompileInputs.cache
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.csproj.CopyComplete
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.dll
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.pdb
+C:\Leroy\SC\Git\dotnetpractice\OdetoCode\OdeToFoodCore\OdeToFoodCore.Data\obj\Debug\netcoreapp2.1\win-x64\OdeToFoodCore.Data.genruntimeconfig.cache
